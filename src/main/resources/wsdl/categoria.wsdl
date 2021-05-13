@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://ws.proyecto5.pe/services/categoria/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="categoria"
+	xmlns:types="http://ws.proyecto5.pe/types/categoria/"
+	targetNamespace="http://ws.proyecto5.pe/services/categoria/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://ws.proyecto5.pe/services/categoria/">
+
+			<!-- Elements -->
+			<!-- GetAll -->
+
+			<xsd:element name="getAllCategoriasRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="getAllCategoriasResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="categoriaType"
+							type="tns:CategoriaType" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- GetById -->
+
+			<xsd:element name="getCategoriaByIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getCategoriaByIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="categoriaType"
+							type="tns:CategoriaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- addCategoria -->
+
+			<xsd:complexType name="serviceStatus">
+				<xsd:sequence>
+					<xsd:element name="statusCode" type="xsd:string" />
+					<xsd:element name="message" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="addCategoriaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="nombre" type="xsd:string"></xsd:element>
+						<xsd:element name="duracion" type="xsd:int"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addCategoriaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="categoriaType"
+							type="tns:CategoriaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Update -->
+
+			<xsd:element name="updateCategoriaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="categoriaType"
+							type="tns:CategoriaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateCategoriaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="categoriaType"
+							type="tns:CategoriaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Delete -->
+
+			<xsd:element name="deleteCategoriaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteCategoriaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Type -->
+
+			<xsd:complexType name="CategoriaType">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int"></xsd:element>
+					<xsd:element name="nombre" type="xsd:string"></xsd:element>
+					<xsd:element name="duracion" type="xsd:int"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Message -->
+	<wsdl:message name="getAllCategoriasRequest">
+		<wsdl:part element="tns:getAllCategoriasRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getAllCategoriasResponse">
+		<wsdl:part element="tns:getAllCategoriasResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="getCategoriaByIdRequest">
+		<wsdl:part element="tns:getCategoriaByIdRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getCategoriaByIdResponse">
+		<wsdl:part element="tns:getCategoriaByIdResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="addCategoriaRequest">
+		<wsdl:part element="tns:addCategoriaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="addCategoriaResponse">
+		<wsdl:part element="tns:addCategoriaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="updateCategoriaRequest">
+		<wsdl:part element="tns:updateCategoriaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="updateCategoriaResponse">
+		<wsdl:part element="tns:updateCategoriaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="deleteCategoriaRequest">
+		<wsdl:part element="tns:deleteCategoriaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="deleteCategoriaResponse">
+		<wsdl:part element="tns:deleteCategoriaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<!-- PortType -->
+	<wsdl:portType name="categoriaPorType">
+		<wsdl:operation name="lista">
+			<wsdl:input message="tns:getAllCategoriasRequest" />
+			<wsdl:output message="tns:getAllCategoriasResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<wsdl:input message="tns:getCategoriaByIdRequest" />
+			<wsdl:output message="tns:getCategoriaByIdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<wsdl:input message="tns:addCategoriaRequest" />
+			<wsdl:output message="tns:addCategoriaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<wsdl:input message="tns:updateCategoriaRequest" />
+			<wsdl:output message="tns:updateCategoriaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<wsdl:input message="tns:deleteCategoriaRequest" />
+			<wsdl:output message="tns:deleteCategoriaResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Binding -->
+	<wsdl:binding name="categoriaSOAP"
+		type="tns:categoriaPorType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="lista">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/categoria/lista" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/categoria/buscarById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/categoria/registrar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/categoria/actualizar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/categoria/eliminar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Service -->
+	<wsdl:service name="categoriaService">
+		<wsdl:documentation>Categoria Service</wsdl:documentation>
+		<wsdl:port binding="tns:categoriaSOAP" name="categoriaSOAP">
+			<soap:address
+				location="http://localhost:9091/proyecto5/ws/categoriaDemo" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

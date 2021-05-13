@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://ws.proyecto5.pe/services/persona/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="persona"
+	xmlns:types="http://ws.proyecto5.pe/types/persona/"
+	targetNamespace="http://ws.proyecto5.pe/services/persona/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://ws.proyecto5.pe/services/persona/">
+
+			<!-- Elements -->
+			<!-- GetAll -->
+
+			<xsd:element name="getAllPersonasRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="getAllPersonasResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="personaType" type="tns:PersonaType"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- GetById -->
+
+			<xsd:element name="getPersonaByIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getPersonaByIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="personaType" type="tns:PersonaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- addPersona -->
+
+			<xsd:complexType name="serviceStatus">
+				<xsd:sequence>
+					<xsd:element name="statusCode" type="xsd:string" />
+					<xsd:element name="message" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="addPersonaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="nombre" type="xsd:string"></xsd:element>
+						<xsd:element name="apellido" type="xsd:string"></xsd:element>
+						<xsd:element name="dni" type="xsd:string"></xsd:element>
+						<xsd:element name="telefono" type="xsd:string"></xsd:element>
+						<xsd:element name="email" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addPersonaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="personaType" type="tns:PersonaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Update -->
+
+			<xsd:element name="updatePersonaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="personaType" type="tns:PersonaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updatePersonaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="personaType" type="tns:PersonaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Delete -->
+
+			<xsd:element name="deletePersonaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deletePersonaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Type -->
+
+			<xsd:complexType name="PersonaType">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int"></xsd:element>
+					<xsd:element name="nombre" type="xsd:string"></xsd:element>
+					<xsd:element name="apellido" type="xsd:string"></xsd:element>
+					<xsd:element name="dni" type="xsd:string"></xsd:element>
+					<xsd:element name="telefono" type="xsd:string"></xsd:element>
+					<xsd:element name="email" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Message -->
+	<wsdl:message name="getAllPersonasRequest">
+		<wsdl:part element="tns:getAllPersonasRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getAllPersonasResponse">
+		<wsdl:part element="tns:getAllPersonasResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="getPersonaByIdRequest">
+		<wsdl:part element="tns:getPersonaByIdRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getPersonaByIdResponse">
+		<wsdl:part element="tns:getPersonaByIdResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="addPersonaRequest">
+		<wsdl:part element="tns:addPersonaRequest" name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="addPersonaResponse">
+		<wsdl:part element="tns:addPersonaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="updatePersonaRequest">
+		<wsdl:part element="tns:updatePersonaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="updatePersonaResponse">
+		<wsdl:part element="tns:updatePersonaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="deletePersonaRequest">
+		<wsdl:part element="tns:deletePersonaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="deletePersonaResponse">
+		<wsdl:part element="tns:deletePersonaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<!-- PortType -->
+	<wsdl:portType name="personaPorType">
+		<wsdl:operation name="lista">
+			<wsdl:input message="tns:getAllPersonasRequest" />
+			<wsdl:output message="tns:getAllPersonasResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<wsdl:input message="tns:getPersonaByIdRequest" />
+			<wsdl:output message="tns:getPersonaByIdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<wsdl:input message="tns:addPersonaRequest" />
+			<wsdl:output message="tns:addPersonaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<wsdl:input message="tns:updatePersonaRequest" />
+			<wsdl:output message="tns:updatePersonaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<wsdl:input message="tns:deletePersonaRequest" />
+			<wsdl:output message="tns:deletePersonaResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Binding -->
+	<wsdl:binding name="personaSOAP" type="tns:personaPorType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="lista">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/persona/lista" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/persona/buscarById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/persona/registrar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/persona/actualizar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/persona/eliminar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Service -->
+	<wsdl:service name="personaService">
+		<wsdl:documentation>Persona Service</wsdl:documentation>
+		<wsdl:port binding="tns:personaSOAP" name="personaSOAP">
+			<soap:address
+				location="http://localhost:9091/proyecto5/ws/personaDemo" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://ws.proyecto5.pe/services/docente/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="docente"
+	xmlns:types="http://ws.proyecto5.pe/types/docente/"
+	targetNamespace="http://ws.proyecto5.pe/services/docente/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://ws.proyecto5.pe/services/docente/">
+
+			<!-- Elements -->
+			<!-- GetAll -->
+
+			<xsd:element name="getAllDocentesRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="getAllDocentesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="docenteType" type="tns:DocenteType"
+							maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- GetById -->
+
+			<xsd:element name="getDocenteByIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getDocenteByIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="docenteType" type="tns:DocenteType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- addDocente -->
+
+			<xsd:complexType name="serviceStatus">
+				<xsd:sequence>
+					<xsd:element name="statusCode" type="xsd:string" />
+					<xsd:element name="message" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="addDocenteRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="codigo" type="xsd:string"></xsd:element>
+						<xsd:element name="ordinario" type="xsd:string"></xsd:element>
+						<xsd:element name="categoria_id" type="xsd:int"></xsd:element>
+						<xsd:element name="ua_id" type="xsd:int"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addDocenteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="docenteType" type="tns:DocenteType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Update -->
+
+			<xsd:element name="updateDocenteRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="docenteType" type="tns:DocenteType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateDocenteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="docenteType" type="tns:DocenteType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Delete -->
+
+			<xsd:element name="deleteDocenteRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteDocenteResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Type -->
+
+			<xsd:complexType name="DocenteType">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int"></xsd:element>
+					<xsd:element name="codigo" type="xsd:string"></xsd:element>
+					<xsd:element name="ordinario" type="xsd:string"></xsd:element>
+					<xsd:element name="categoria_id" type="xsd:int"></xsd:element>
+					<xsd:element name="ua_id" type="xsd:int"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Message -->
+	<wsdl:message name="getAllDocentesRequest">
+		<wsdl:part element="tns:getAllDocentesRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getAllDocentesResponse">
+		<wsdl:part element="tns:getAllDocentesResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="getDocenteByIdRequest">
+		<wsdl:part element="tns:getDocenteByIdRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getDocenteByIdResponse">
+		<wsdl:part element="tns:getDocenteByIdResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="addDocenteRequest">
+		<wsdl:part element="tns:addDocenteRequest" name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="addDocenteResponse">
+		<wsdl:part element="tns:addDocenteResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="updateDocenteRequest">
+		<wsdl:part element="tns:updateDocenteRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="updateDocenteResponse">
+		<wsdl:part element="tns:updateDocenteResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="deleteDocenteRequest">
+		<wsdl:part element="tns:deleteDocenteRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="deleteDocenteResponse">
+		<wsdl:part element="tns:deleteDocenteResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<!-- PortType -->
+	<wsdl:portType name="docentePorType">
+		<wsdl:operation name="lista">
+			<wsdl:input message="tns:getAllDocentesRequest" />
+			<wsdl:output message="tns:getAllDocentesResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<wsdl:input message="tns:getDocenteByIdRequest" />
+			<wsdl:output message="tns:getDocenteByIdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<wsdl:input message="tns:addDocenteRequest" />
+			<wsdl:output message="tns:addDocenteResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<wsdl:input message="tns:updateDocenteRequest" />
+			<wsdl:output message="tns:updateDocenteResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<wsdl:input message="tns:deleteDocenteRequest" />
+			<wsdl:output message="tns:deleteDocenteResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Binding -->
+	<wsdl:binding name="docenteSOAP" type="tns:docentePorType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="lista">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/docente/lista" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/docente/buscarById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/docente/registrar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/docente/actualizar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/docente/eliminar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Service -->
+	<wsdl:service name="docenteService">
+		<wsdl:documentation>Docente Service</wsdl:documentation>
+		<wsdl:port binding="tns:docenteSOAP" name="docenteSOAP">
+			<soap:address
+				location="http://localhost:9091/proyecto5/ws/docenteDemo" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

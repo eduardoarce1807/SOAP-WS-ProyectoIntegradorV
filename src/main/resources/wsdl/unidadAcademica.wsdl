@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://ws.proyecto5.pe/services/unidadAcademica/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="unidadAcademica"
+	xmlns:types="http://ws.proyecto5.pe/types/unidadAcademica/"
+	targetNamespace="http://ws.proyecto5.pe/services/unidadAcademica/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://ws.proyecto5.pe/services/unidadAcademica/">
+
+			<!-- Elements -->
+			<!-- GetAll -->
+
+			<xsd:element name="getAllUnidadAcademicasRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="getAllUnidadAcademicasResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="unidadAcademicaType"
+							type="tns:UnidadAcademicaType" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- GetById -->
+
+			<xsd:element name="getUnidadAcademicaByIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getUnidadAcademicaByIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="unidadAcademicaType"
+							type="tns:UnidadAcademicaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- addUnidadAcademica -->
+
+			<xsd:complexType name="serviceStatus">
+				<xsd:sequence>
+					<xsd:element name="statusCode" type="xsd:string" />
+					<xsd:element name="message" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="addUnidadAcademicaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="nombre" type="xsd:string"></xsd:element>
+						<xsd:element name="padre_id" type="xsd:int"></xsd:element>
+						<xsd:element name="tipo_ua_id" type="xsd:int"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="addUnidadAcademicaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="unidadAcademicaType"
+							type="tns:UnidadAcademicaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Update -->
+
+			<xsd:element name="updateUnidadAcademicaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="unidadAcademicaType"
+							type="tns:UnidadAcademicaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateUnidadAcademicaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+						<xsd:element name="unidadAcademicaType"
+							type="tns:UnidadAcademicaType" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Delete -->
+
+			<xsd:element name="deleteUnidadAcademicaRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="deleteUnidadAcademicaResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="serviceStatus"
+							type="tns:serviceStatus" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<!-- Type -->
+
+			<xsd:complexType name="UnidadAcademicaType">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:int"></xsd:element>
+					<xsd:element name="nombre" type="xsd:string"></xsd:element>
+					<xsd:element name="padre_id" type="xsd:int"></xsd:element>
+					<xsd:element name="tipo_ua_id" type="xsd:int"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Message -->
+	<wsdl:message name="getAllUnidadAcademicasRequest">
+		<wsdl:part element="tns:getAllUnidadAcademicasRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getAllUnidadAcademicasResponse">
+		<wsdl:part element="tns:getAllUnidadAcademicasResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="getUnidadAcademicaByIdRequest">
+		<wsdl:part element="tns:getUnidadAcademicaByIdRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="getUnidadAcademicaByIdResponse">
+		<wsdl:part element="tns:getUnidadAcademicaByIdResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="addUnidadAcademicaRequest">
+		<wsdl:part element="tns:addUnidadAcademicaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="addUnidadAcademicaResponse">
+		<wsdl:part element="tns:addUnidadAcademicaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="updateUnidadAcademicaRequest">
+		<wsdl:part element="tns:updateUnidadAcademicaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="updateUnidadAcademicaResponse">
+		<wsdl:part element="tns:updateUnidadAcademicaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<wsdl:message name="deleteUnidadAcademicaRequest">
+		<wsdl:part element="tns:deleteUnidadAcademicaRequest"
+			name="inputData" />
+	</wsdl:message>
+	<wsdl:message name="deleteUnidadAcademicaResponse">
+		<wsdl:part element="tns:deleteUnidadAcademicaResponse"
+			name="outputData" />
+	</wsdl:message>
+
+	<!-- PortType -->
+	<wsdl:portType name="unidadAcademicaPorType">
+		<wsdl:operation name="lista">
+			<wsdl:input message="tns:getAllUnidadAcademicasRequest" />
+			<wsdl:output message="tns:getAllUnidadAcademicasResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<wsdl:input message="tns:getUnidadAcademicaByIdRequest" />
+			<wsdl:output message="tns:getUnidadAcademicaByIdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<wsdl:input message="tns:addUnidadAcademicaRequest" />
+			<wsdl:output message="tns:addUnidadAcademicaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<wsdl:input message="tns:updateUnidadAcademicaRequest" />
+			<wsdl:output message="tns:updateUnidadAcademicaResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<wsdl:input message="tns:deleteUnidadAcademicaRequest" />
+			<wsdl:output message="tns:deleteUnidadAcademicaResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Binding -->
+	<wsdl:binding name="unidadAcademicaSOAP"
+		type="tns:unidadAcademicaPorType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="lista">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/unidadAcademica/lista" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="buscarById">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/unidadAcademica/buscarById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registrar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/unidadAcademica/registrar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="actualizar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/unidadAcademica/actualizar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="eliminar">
+			<soap:operation
+				soapAction="http://ws.proyecto5.pe/services/unidadAcademica/eliminar" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Service -->
+	<wsdl:service name="unidadAcademicaService">
+		<wsdl:documentation>UnidadAcademica Service</wsdl:documentation>
+		<wsdl:port binding="tns:unidadAcademicaSOAP"
+			name="unidadAcademicaSOAP">
+			<soap:address
+				location="http://localhost:9091/proyecto5/ws/unidadAcademicaDemo" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
