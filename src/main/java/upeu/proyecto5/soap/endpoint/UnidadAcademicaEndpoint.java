@@ -136,11 +136,11 @@ public class UnidadAcademicaEndpoint {
 		DeleteUnidadAcademicaResponse response = new DeleteUnidadAcademicaResponse();
 		ServiceStatus serviceStatus = new ServiceStatus();
 
-		boolean flag = service.eliminar(request.getId());
+		Optional<UnidadAcademica> unidadAcademica = service.buscarById(request.getId());
 
-		if (flag == false) {
+		if (unidadAcademica.isEmpty()) {
 			serviceStatus.setStatusCode("FAIL");
-			serviceStatus.setMessage("Exception while deletint Entity id=" + request.getId());
+			serviceStatus.setMessage("Exception while deleting Entity id = " + request.getId());
 		} else {
 			serviceStatus.setStatusCode("SUCCESS");
 			serviceStatus.setMessage("Content Deleted Successfully");

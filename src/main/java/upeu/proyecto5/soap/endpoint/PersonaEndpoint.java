@@ -141,11 +141,11 @@ public class PersonaEndpoint {
 		DeletePersonaResponse response = new DeletePersonaResponse();
 		ServiceStatus serviceStatus = new ServiceStatus();
 
-		boolean flag = service.eliminar(request.getId());
+		Optional<Persona> persona = service.buscarById(request.getId());
 
-		if (flag == false) {
+		if (persona.isEmpty()) {
 			serviceStatus.setStatusCode("FAIL");
-			serviceStatus.setMessage("Exception while deletint Entity id=" + request.getId());
+			serviceStatus.setMessage("Exception while deleting Entity id = " + request.getId());
 		} else {
 			serviceStatus.setStatusCode("SUCCESS");
 			serviceStatus.setMessage("Content Deleted Successfully");

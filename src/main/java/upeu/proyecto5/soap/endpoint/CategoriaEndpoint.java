@@ -134,12 +134,12 @@ public class CategoriaEndpoint {
 	public DeleteCategoriaResponse deleteMovie(@RequestPayload DeleteCategoriaRequest request) {
 		DeleteCategoriaResponse response = new DeleteCategoriaResponse();
 		ServiceStatus serviceStatus = new ServiceStatus();
+		
+		Optional<Categoria> categoria = service.buscarById(request.getId());
 
-		boolean flag = service.eliminar(request.getId());
-
-		if (flag == false) {
+		if (categoria.isEmpty()) {
 			serviceStatus.setStatusCode("FAIL");
-			serviceStatus.setMessage("Exception while deletint Entity id=" + request.getId());
+			serviceStatus.setMessage("Exception while deleting Entity id = " + request.getId());
 		} else {
 			serviceStatus.setStatusCode("SUCCESS");
 			serviceStatus.setMessage("Content Deleted Successfully");
